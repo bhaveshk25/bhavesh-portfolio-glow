@@ -1,0 +1,13 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#10151D"/>
+  <rect x="54" y="54" width="1092" height="792" rx="34" fill="#161D2B"/>
+  <circle cx="985" cy="190" r="160" fill="#F97316" fill-opacity="0.18"/>
+  <circle cx="230" cy="732" r="220" fill="#14B8A6" fill-opacity="0.16"/>
+  <rect x="150" y="158" width="900" height="420" rx="30" fill="#0B1220" stroke="#334155"/>
+  <path d="M210 512L320 432L438 458L536 366L656 388L742 272L876 236L990 194" stroke="#F97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="202" y="252" width="120" height="220" rx="24" fill="#111C31" stroke="#334155"/>
+  <rect x="350" y="316" width="120" height="156" rx="24" fill="#111C31" stroke="#334155"/>
+  <rect x="498" y="286" width="120" height="186" rx="24" fill="#111C31" stroke="#334155"/>
+  <text x="126" y="704" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="64" font-weight="700">DATA SCIENCE TRAINING</text>
+  <text x="126" y="764" fill="#94A3B8" font-family="Arial, sans-serif" font-size="30">Python • EDA • Dashboards • Home Price Estimator</text>
+</svg>

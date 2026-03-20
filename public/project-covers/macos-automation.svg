@@ -1,0 +1,26 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#07111E"/>
+  <rect x="54" y="54" width="1092" height="792" rx="34" fill="url(#paint0_linear)"/>
+  <circle cx="968" cy="182" r="160" fill="#14B8A6" fill-opacity="0.18"/>
+  <circle cx="240" cy="750" r="210" fill="#8B5CF6" fill-opacity="0.14"/>
+  <rect x="178" y="132" width="844" height="470" rx="36" fill="#0B1220" stroke="#334155"/>
+  <circle cx="248" cy="184" r="12" fill="#EF4444"/>
+  <circle cx="290" cy="184" r="12" fill="#F59E0B"/>
+  <circle cx="332" cy="184" r="12" fill="#22C55E"/>
+  <rect x="248" y="244" width="214" height="214" rx="28" fill="#111C31" stroke="#334155"/>
+  <rect x="504" y="244" width="214" height="214" rx="28" fill="#111C31" stroke="#334155"/>
+  <rect x="760" y="244" width="120" height="214" rx="28" fill="#111C31" stroke="#334155"/>
+  <path d="M304 350C304 317 330 290 362 290C394 290 420 317 420 350C420 383 394 410 362 410C330 410 304 383 304 350Z" stroke="#14B8A6" stroke-width="10"/>
+  <path d="M554 404L632 302L668 344L612 406" stroke="#F97316" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M804 300H836" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+  <path d="M804 350H836" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+  <path d="M804 400H836" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+  <text x="122" y="724" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="64" font-weight="700">MACOS AUTOMATION TOOL</text>
+  <text x="122" y="782" fill="#94A3B8" font-family="Arial, sans-serif" font-size="30">Clipboard Flow • OCR • Menu Bar Utility</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="54" y1="54" x2="1146" y2="846" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+</svg>

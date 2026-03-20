@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#0D1321"/>
+  <rect x="52" y="52" width="1096" height="796" rx="34" fill="#111827"/>
+  <circle cx="965" cy="176" r="160" fill="#22C55E" fill-opacity="0.18"/>
+  <circle cx="220" cy="760" r="220" fill="#3B82F6" fill-opacity="0.15"/>
+  <rect x="122" y="132" width="956" height="472" rx="28" fill="#0B1220" stroke="#334155"/>
+  <path d="M168 510L310 438L426 470L580 308L702 352L856 212L1032 252" stroke="#22C55E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M168 564H1032" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+  <path d="M168 226V564" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+  <rect x="168" y="656" width="164" height="96" rx="22" fill="#111C31" stroke="#334155"/>
+  <rect x="362" y="656" width="164" height="96" rx="22" fill="#111C31" stroke="#334155"/>
+  <rect x="556" y="656" width="164" height="96" rx="22" fill="#111C31" stroke="#334155"/>
+  <text x="122" y="806" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="68" font-weight="700">STOCK MARKET DASHBOARD</text>
+  <text x="122" y="862" fill="#94A3B8" font-family="Arial, sans-serif" font-size="30">Power BI • DAX • KPIs • Interactive Insights</text>
+</svg>

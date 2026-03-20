@@ -60,14 +60,19 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deploy on Vercel
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+1. Push this project to GitHub.
+2. Go to [Vercel](https://vercel.com/) and import the repository.
+3. Keep the default Vite build settings if Vercel detects them automatically.
+4. Add these environment variables in the Vercel project settings:
 
-## Can I connect a custom domain to my Lovable project?
+```env
+VITE_SUPABASE_URL=your-project-url
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/xqeynoan
+```
 
-Yes, you can!
+5. Deploy the project.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The included `vercel.json` ensures routes like `/admin`, `/skills`, `/projects`, and other client-side pages work correctly after refresh.
