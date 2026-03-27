@@ -15,10 +15,10 @@ export const profile = {
 };
 
 export const aboutItems = [
-  "A strong interest lies in building interfaces that feel modern, polished, and easy to use.",
-  "Particular interest is drawn to data-heavy problems that combine logic, experimentation, and storytelling.",
-  "The most effective learning comes through shipping projects, reviewing outcomes, and refining rough edges.",
-  "This portfolio is intended to reflect not only technical skills, but also the kind of thoughtful builder being developed.",
+  "I am Bhavesh Kumawat, a B.Tech Computer Science student who enjoys learning by building real projects and improving them step by step.",
+  "My main areas of interest are Data Science, Machine Learning, and web development, because they let me solve practical problems with both logic and creativity.",
+  "Through my academic work, certifications, and personal projects, I have been developing skills in Python, analytics, frontend development, and problem solving.",
+  "This portfolio represents my journey as a student and showcases the work I have done so far to prepare myself for internships, industry projects, and future opportunities.",
 ];
 
 export const skillGroups = [

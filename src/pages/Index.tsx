@@ -164,7 +164,7 @@ const Index = () => {
             <div className="space-y-4">
               <p className="section-kicker">About</p>
               <h2 className="section-heading max-w-md">
-                A strong emphasis on clarity in code, design, and communication.
+                A quick introduction about who I am and what I am working toward.
               </h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2">

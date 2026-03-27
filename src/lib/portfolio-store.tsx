@@ -89,6 +89,12 @@ const STORAGE_KEY = "bhavesh-portfolio-admin-content";
 const REMOTE_ROW_ID = "main";
 const LOCAL_ADMIN_USER = import.meta.env.VITE_ADMIN_USER ?? "bhavesh-admin";
 const LOCAL_ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS ?? "bk-portfolio-2026";
+const legacyAboutItems = [
+  "A strong interest lies in building interfaces that feel modern, polished, and easy to use.",
+  "Particular interest is drawn to data-heavy problems that combine logic, experimentation, and storytelling.",
+  "The most effective learning comes through shipping projects, reviewing outcomes, and refining rough edges.",
+  "This portfolio is intended to reflect not only technical skills, but also the kind of thoughtful builder being developed.",
+];
 
 const withIds = <T extends Record<string, unknown>>(items: T[], key: keyof T) =>
   items.map((item) => ({
@@ -147,20 +153,44 @@ const defaultContent: PortfolioContent = {
   ),
 };
 
+const shouldReplaceLegacyAbout = (items?: string[]) =>
+  Array.isArray(items) &&
+  items.length === legacyAboutItems.length &&
+  items.every((item, index) => item === legacyAboutItems[index]);
+
+const normalizeContent = (source?: Partial<PortfolioContent> | null): Partial<PortfolioContent> | undefined => {
+  if (!source) {
+    return source ?? undefined;
+  }
+
+  if (!shouldReplaceLegacyAbout(source.aboutItems)) {
+    return source;
+  }
+
+  return {
+    ...source,
+    aboutItems,
+  };
+};
+
 const PortfolioContext = createContext<PortfolioContextValue | null>(null);
 
-const mergeContent = (source?: Partial<PortfolioContent> | null): PortfolioContent => ({
-  ...defaultContent,
-  ...source,
-  profile: {
-    ...defaultContent.profile,
-    ...source?.profile,
-  },
-  aboutItems: source?.aboutItems?.length ? source.aboutItems : defaultContent.aboutItems,
-  projects: source?.projects?.length ? source.projects : defaultContent.projects,
-  certificates: source?.certificates?.length ? source.certificates : defaultContent.certificates,
-  skillSections: source?.skillSections?.length ? source.skillSections : defaultContent.skillSections,
-});
+const mergeContent = (source?: Partial<PortfolioContent> | null): PortfolioContent => {
+  const normalizedSource = normalizeContent(source);
+
+  return {
+    ...defaultContent,
+    ...normalizedSource,
+    profile: {
+      ...defaultContent.profile,
+      ...normalizedSource?.profile,
+    },
+    aboutItems: normalizedSource?.aboutItems?.length ? normalizedSource.aboutItems : defaultContent.aboutItems,
+    projects: normalizedSource?.projects?.length ? normalizedSource.projects : defaultContent.projects,
+    certificates: normalizedSource?.certificates?.length ? normalizedSource.certificates : defaultContent.certificates,
+    skillSections: normalizedSource?.skillSections?.length ? normalizedSource.skillSections : defaultContent.skillSections,
+  };
+};
 
 const readStoredContent = (): PortfolioContent => {
   if (typeof window === "undefined") {
