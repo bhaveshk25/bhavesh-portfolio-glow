@@ -66,6 +66,7 @@ describe("Portfolio Page Rendering", () => {
     renderWithProviders(<CertificatesPage />, "/certificates");
     expect(screen.getByText(/Complete Machine Learning & Data Science/i)).toBeInTheDocument();
     expect(screen.getByText("GeeksforGeeks")).toBeInTheDocument();
+    expect(screen.getAllByText(/CipherSchools/i).length).toBeGreaterThan(0);
   });
 
   it("renders the CV page with duration badges", () => {

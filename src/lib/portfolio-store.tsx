@@ -85,7 +85,7 @@ type PortfolioRow = {
   skill_sections?: EditableSkillSection[];
 };
 
-const STORAGE_KEY = "bhavesh-portfolio-admin-content-v3";
+const STORAGE_KEY = "bhavesh-portfolio-admin-content-v4";
 const REMOTE_ROW_ID = "main";
 const LOCAL_ADMIN_USER = import.meta.env.VITE_ADMIN_USER ?? "bhavesh-admin";
 const LOCAL_ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS ?? "bk-portfolio-2026";
@@ -163,6 +163,11 @@ const hasLatestProjects = (projects?: EditableProject[]) =>
   projects.length >= 3 &&
   projects.some((p) => p.title.toLowerCase().includes("visiontype"));
 
+const hasLatestCertificates = (certificates?: EditableCertificate[]) =>
+  Array.isArray(certificates) &&
+  certificates.length >= 6 &&
+  certificates.some((c) => c.issuer.toLowerCase().includes("cipher") || c.title.toLowerCase().includes("genai"));
+
 const normalizeContent = (source?: Partial<PortfolioContent> | null): Partial<PortfolioContent> | undefined => {
   if (!source) {
     return source ?? undefined;
@@ -181,6 +186,13 @@ const normalizeContent = (source?: Partial<PortfolioContent> | null): Partial<Po
     normalized = {
       ...normalized,
       projects: defaultContent.projects,
+    };
+  }
+
+  if (!hasLatestCertificates(source.certificates)) {
+    normalized = {
+      ...normalized,
+      certificates: defaultContent.certificates,
     };
   }
 

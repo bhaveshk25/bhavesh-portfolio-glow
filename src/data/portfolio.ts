@@ -108,6 +108,12 @@ export const journey: JourneyItem[] = [
 
 export const training = [
   {
+    title: "Data Structures & Algorithms, Backend & GenAI",
+    provider: "CipherSchools (Jun'26 - Aug'26)",
+    detail:
+      "Completed industry-oriented training covering advanced DSA problem solving, backend systems architecture, and Generative AI application development.",
+  },
+  {
     title: "Frontend Development Training",
     provider: "Self-paced + project-based learning",
     detail:
@@ -128,6 +134,14 @@ export const training = [
 ];
 
 export const certificates = [
+  {
+    title: "Industry-Oriented Program: DSA, Backend & GenAI",
+    issuer: "CipherSchools",
+    note: "Completed comprehensive industry training in Data Structures & Algorithms, Backend Systems, and Generative AI for Development (ID: CS2026-18807).",
+    image: "/certificates/cipherschools-dsa-backend-genai.png",
+    date: "AUG 26",
+    href: "/certificates/full/cipherschools-dsa-backend-genai.pdf",
+  },
   {
     title: "Complete Machine Learning & Data Science",
     issuer: "GeeksforGeeks",
@@ -390,6 +404,7 @@ export const cvTraining = {
 };
 
 export const cvCertificates = [
+  { title: "CipherSchools", detail: "Industry-Oriented Program: DSA, Backend & GenAI", date: "Aug 2026" },
   { title: "GeeksforGeeks", detail: "Complete Machine Learning & Data Science", date: "Nov 2025" },
   { title: "Springboard", detail: "Generative AI & Computational Theory", date: "Aug 2025" },
   { title: "NPTEL", detail: "Cloud Computing", date: "May 2025" },
