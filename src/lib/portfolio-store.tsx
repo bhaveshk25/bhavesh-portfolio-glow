@@ -185,24 +185,23 @@ const mergeContent = (source?: Partial<PortfolioContent> | null): PortfolioConte
       ...defaultContent.profile,
       ...normalizedSource?.profile,
     },
-    aboutItems: normalizedSource?.aboutItems?.length ? normalizedSource.aboutItems : defaultContent.aboutItems,
-    projects: normalizedSource?.projects?.length ? normalizedSource.projects : defaultContent.projects,
-    certificates: normalizedSource?.certificates?.length ? normalizedSource.certificates : defaultContent.certificates,
-    skillSections: normalizedSource?.skillSections?.length ? normalizedSource.skillSections : defaultContent.skillSections,
+    aboutItems: Array.isArray(normalizedSource?.aboutItems) ? normalizedSource.aboutItems : defaultContent.aboutItems,
+    projects: Array.isArray(normalizedSource?.projects) ? normalizedSource.projects : defaultContent.projects,
+    certificates: Array.isArray(normalizedSource?.certificates) ? normalizedSource.certificates : defaultContent.certificates,
+    skillSections: Array.isArray(normalizedSource?.skillSections) ? normalizedSource.skillSections : defaultContent.skillSections,
   };
 };
 
 const readStoredContent = (): PortfolioContent => {
-  if (typeof window === "undefined") {
-    return defaultContent;
-  }
-
-  const raw = window.localStorage.getItem(STORAGE_KEY);
-  if (!raw) {
+  if (typeof window === "undefined" || !window.localStorage) {
     return defaultContent;
   }
 
   try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      return defaultContent;
+    }
     return mergeContent(JSON.parse(raw) as Partial<PortfolioContent>);
   } catch {
     return defaultContent;
@@ -210,11 +209,15 @@ const readStoredContent = (): PortfolioContent => {
 };
 
 const writeStoredContent = (content: PortfolioContent) => {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !window.localStorage) {
     return;
   }
 
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+  } catch {
+    // Ignore storage write errors (e.g. quota exceeded or private mode)
+  }
 };
 
 const portfolioRowToContent = (row?: PortfolioRow | null): PortfolioContent =>
@@ -249,7 +252,7 @@ export const PortfolioProvider = ({ children }: { children: ReactNode }) => {
   const [localAdminAuthenticated, setLocalAdminAuthenticated] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
 
-  const authMode = isSupabaseConfigured ? "supabase" : "local";
+  const authMode: "local" | "supabase" = isSupabaseConfigured ? "supabase" : "local";
   const isAuthenticated = authMode === "supabase" ? Boolean(session?.user) : localAdminAuthenticated;
   const authEmail =
     authMode === "supabase" ? session?.user?.email ?? "" : localAdminAuthenticated ? LOCAL_ADMIN_USER : "";
@@ -287,8 +290,12 @@ export const PortfolioProvider = ({ children }: { children: ReactNode }) => {
     if (!isSupabaseConfigured || !supabase) {
       setContent(readStoredContent());
       setIsHydrated(true);
-      if (typeof window !== "undefined") {
-        setLocalAdminAuthenticated(window.sessionStorage.getItem("bhavesh-portfolio-admin-session") === "true");
+      if (typeof window !== "undefined" && window.sessionStorage) {
+        try {
+          setLocalAdminAuthenticated(window.sessionStorage.getItem("bhavesh-portfolio-admin-session") === "true");
+        } catch {
+          setLocalAdminAuthenticated(false);
+        }
       }
       return;
     }
@@ -466,8 +473,12 @@ export const PortfolioProvider = ({ children }: { children: ReactNode }) => {
     async (email: string, password: string): Promise<SaveResult> => {
       if (!isSupabaseConfigured || !supabase) {
         if (email === LOCAL_ADMIN_USER && password === LOCAL_ADMIN_PASS) {
-          if (typeof window !== "undefined") {
-            window.sessionStorage.setItem("bhavesh-portfolio-admin-session", "true");
+          if (typeof window !== "undefined" && window.sessionStorage) {
+            try {
+              window.sessionStorage.setItem("bhavesh-portfolio-admin-session", "true");
+            } catch {
+              // Ignore session storage error
+            }
           }
           setLocalAdminAuthenticated(true);
           return { ok: true };
@@ -493,8 +504,12 @@ export const PortfolioProvider = ({ children }: { children: ReactNode }) => {
 
   const signOut = useCallback(async () => {
     if (!isSupabaseConfigured || !supabase) {
-      if (typeof window !== "undefined") {
-        window.sessionStorage.removeItem("bhavesh-portfolio-admin-session");
+      if (typeof window !== "undefined" && window.sessionStorage) {
+        try {
+          window.sessionStorage.removeItem("bhavesh-portfolio-admin-session");
+        } catch {
+          // Ignore session storage error
+        }
       }
       setLocalAdminAuthenticated(false);
       return;

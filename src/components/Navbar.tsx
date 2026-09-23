@@ -21,8 +21,13 @@ const Navbar = () => {
   const [activeHomeSection, setActiveHomeSection] = useState("home");
   const [dark, setDark] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      try {
+        const stored = window.localStorage?.getItem("theme");
+        if (stored) return stored === "dark";
+        return Boolean(window.matchMedia?.("(prefers-color-scheme: dark)")?.matches);
+      } catch {
+        return false;
+      }
     }
     return false;
   });
@@ -76,7 +81,11 @@ const Navbar = () => {
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    try {
+      window.localStorage?.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      // ignore storage errors
+    }
   }, [dark]);
 
   return (
@@ -114,10 +123,15 @@ const Navbar = () => {
                 />
               </NavLink>
             ) : (
-              <a
+              <Link
                 key={l.href}
-                href={l.href}
-                onClick={() => setActiveHomeSection(l.href.endsWith("#about") ? "about" : "home")}
+                to={l.href}
+                onClick={() => {
+                  setActiveHomeSection(l.href.endsWith("#about") ? "about" : "home");
+                  if (location.pathname === "/" && l.href.endsWith("#home")) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 className={`group relative overflow-hidden pb-1 text-sm font-medium transition-colors hover:text-primary ${
                   isAnchorActive(l.href) ? "text-primary" : "text-muted-foreground"
                 }`}
@@ -127,7 +141,7 @@ const Navbar = () => {
                   aria-hidden="true"
                   className="absolute bottom-0 left-0 h-0.5 w-full origin-left rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-500 ease-out scale-x-0 group-hover:scale-x-100"
                 />
-              </a>
+              </Link>
             )
           ))}
         </div>
@@ -174,11 +188,14 @@ const Navbar = () => {
                   />
                 </NavLink>
               ) : (
-                <a
+                <Link
                   key={l.href}
-                  href={l.href}
+                  to={l.href}
                   onClick={() => {
                     setActiveHomeSection(l.href.endsWith("#about") ? "about" : "home");
+                    if (location.pathname === "/" && l.href.endsWith("#home")) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
                     setIsOpen(false);
                   }}
                   className={`group relative w-fit overflow-hidden py-1 pr-1 text-sm font-medium transition-colors hover:text-primary ${
@@ -190,7 +207,7 @@ const Navbar = () => {
                     aria-hidden="true"
                     className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
                   />
-                </a>
+                </Link>
               )
             ))}
           </div>

@@ -1,4 +1,4 @@
-import { Download, Eye, Github, Linkedin, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Download, Eye, Github, Linkedin, Mail, Phone } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import {
   cvActivities,
@@ -94,9 +94,22 @@ const CVPage = () => (
                 <p className="text-xs font-mono uppercase tracking-[0.24em] text-primary">Project</p>
                 <h3 className="mt-2 text-2xl font-semibold text-foreground">{project.title}</h3>
               </div>
-              <span className="rounded-full border border-border/70 px-4 py-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
-                {project.date}
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="rounded-full border border-border/70 px-4 py-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
+                  {project.duration}
+                </span>
+                {project.href ? (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary transition hover:bg-primary hover:text-primary-foreground"
+                    aria-label={`Open ${project.title}`}
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                ) : null}
+              </div>
             </div>
 
             <div className="mt-6 grid gap-3">
@@ -128,9 +141,22 @@ const CVPage = () => (
               <p className="text-xs font-mono uppercase tracking-[0.24em] text-primary">Summer Training</p>
               <h3 className="mt-2 text-2xl font-semibold text-foreground">{cvTraining.title}</h3>
             </div>
-            <span className="rounded-full border border-border/70 px-4 py-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
-              {cvTraining.date}
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="rounded-full border border-border/70 px-4 py-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
+                {cvTraining.duration}
+              </span>
+              {cvTraining.href ? (
+                <a
+                  href={cvTraining.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary transition hover:bg-primary hover:text-primary-foreground"
+                  aria-label={`Open ${cvTraining.title}`}
+                >
+                  <ArrowUpRight size={16} />
+                </a>
+              ) : null}
+            </div>
           </div>
 
           <div className="mt-6 grid gap-3">

@@ -16,16 +16,33 @@ const monthOrder: Record<string, number> = {
   DEC: 12,
 };
 
-const getCertificateValue = (date: string) => {
-  const [month, year] = date.split(" ");
-  return Number(`20${year}`) * 100 + (monthOrder[month] ?? 0);
+const getCertificateValue = (date?: string) => {
+  if (!date || typeof date !== "string") {
+    return 0;
+  }
+  const parts = date.trim().split(/\s+/);
+  if (parts.length < 2) {
+    return 0;
+  }
+  const [month, year] = parts;
+  const numericYear = Number(year.length === 2 ? `20${year}` : year);
+  if (Number.isNaN(numericYear)) {
+    return 0;
+  }
+  const monthNum = monthOrder[month.toUpperCase()] ?? 0;
+  return numericYear * 100 + monthNum;
 };
 
 const CertificatesPage = () => {
   const { content } = usePortfolioContent();
-  const sortedCertificates = [...content.certificates].sort(
-    (a, b) => getCertificateValue(b.date) - getCertificateValue(a.date),
-  );
+  const sortedCertificates = [...content.certificates].sort((a, b) => {
+    const valA = getCertificateValue(a.date);
+    const valB = getCertificateValue(b.date);
+    if (valA !== valB) {
+      return valB - valA;
+    }
+    return a.title.localeCompare(b.title);
+  });
 
   return (
     <PageShell

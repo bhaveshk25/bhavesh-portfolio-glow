@@ -120,7 +120,7 @@ const ContactPage = () => {
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-7 text-muted-foreground">
-              Fill out the form and your mail app will open with the message prefilled for sending.
+              Fill out the form below to send a message directly to my inbox.
             </p>
           </div>
 
