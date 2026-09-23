@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { ArrowUpRight, Download, Github, Mail, MapPin, Sparkles, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import ProjectsSection from "@/components/ProjectsSection";
 import Footer from "@/components/Footer";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -185,6 +186,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        <ProjectsSection />
       </main>
 
       <Footer />

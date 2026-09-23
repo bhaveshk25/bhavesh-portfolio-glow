@@ -40,6 +40,7 @@ describe("Portfolio Page Rendering", () => {
     renderWithProviders(<Index />, "/");
     expect(screen.getByText("Bhavesh Kumawat")).toBeInTheDocument();
     expect(screen.getByText(/Building web and data experiences/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/VisionType/i).length).toBeGreaterThan(0);
   });
 
   it("renders the Skills page with skill groups", () => {
@@ -51,6 +52,7 @@ describe("Portfolio Page Rendering", () => {
   it("renders the Projects page with project cards and training", () => {
     renderWithProviders(<ProjectsPage />, "/projects");
     expect(screen.getByText(/Summer Training in Data Science/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/VisionType/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/DevOps Project: CI\/CD Pipeline for Portfolio Website/i)).toBeInTheDocument();
   });
 

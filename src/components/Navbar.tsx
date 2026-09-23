@@ -6,8 +6,9 @@ import { profile } from "@/data/portfolio";
 const navLinks = [
   { label: "Home", href: "/#home", type: "anchor" },
   { label: "About", href: "/#about", type: "anchor" },
+  { label: "Projects", href: "/#projects", type: "anchor" },
   { label: "Skills", href: "/skills", type: "route" },
-  { label: "Project / Training", href: "/projects", type: "route" },
+  { label: "Training", href: "/projects", type: "route" },
   { label: "Journey", href: "/journey", type: "route" },
   { label: "Certificates", href: "/certificates", type: "route" },
   { label: "CV", href: "/cv", type: "route" },
@@ -41,14 +42,17 @@ const Navbar = () => {
         return;
       }
 
+      const projectsSection = document.getElementById("projects");
       const aboutSection = document.getElementById("about");
-      if (!aboutSection) {
-        setActiveHomeSection("home");
-        return;
-      }
 
-      const aboutStart = aboutSection.offsetTop - 140;
-      setActiveHomeSection(window.scrollY >= aboutStart ? "about" : "home");
+      const scrollPos = window.scrollY;
+      if (projectsSection && scrollPos >= projectsSection.offsetTop - 140) {
+        setActiveHomeSection("projects");
+      } else if (aboutSection && scrollPos >= aboutSection.offsetTop - 140) {
+        setActiveHomeSection("about");
+      } else {
+        setActiveHomeSection("home");
+      }
     };
 
     onScroll();
@@ -61,12 +65,22 @@ const Navbar = () => {
       return;
     }
 
-    setActiveHomeSection(location.hash === "#about" ? "about" : "home");
+    if (location.hash === "#projects") {
+      setActiveHomeSection("projects");
+    } else if (location.hash === "#about") {
+      setActiveHomeSection("about");
+    } else {
+      setActiveHomeSection("home");
+    }
   }, [location.hash, location.pathname]);
 
   const isAnchorActive = (href: string) => {
     if (location.pathname !== "/") {
       return false;
+    }
+
+    if (href.endsWith("#projects")) {
+      return activeHomeSection === "projects";
     }
 
     if (href.endsWith("#about")) {
@@ -128,7 +142,13 @@ const Navbar = () => {
                 key={l.href}
                 to={l.href}
                 onClick={() => {
-                  setActiveHomeSection(l.href.endsWith("#about") ? "about" : "home");
+                  if (l.href.endsWith("#projects")) {
+                    setActiveHomeSection("projects");
+                  } else if (l.href.endsWith("#about")) {
+                    setActiveHomeSection("about");
+                  } else {
+                    setActiveHomeSection("home");
+                  }
                   if (location.pathname === "/" && l.href.endsWith("#home")) {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }
@@ -203,7 +223,13 @@ const Navbar = () => {
                   key={l.href}
                   to={l.href}
                   onClick={() => {
-                    setActiveHomeSection(l.href.endsWith("#about") ? "about" : "home");
+                    if (l.href.endsWith("#projects")) {
+                      setActiveHomeSection("projects");
+                    } else if (l.href.endsWith("#about")) {
+                      setActiveHomeSection("about");
+                    } else {
+                      setActiveHomeSection("home");
+                    }
                     if (location.pathname === "/" && l.href.endsWith("#home")) {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }
