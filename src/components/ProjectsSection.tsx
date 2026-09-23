@@ -1,5 +1,5 @@
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowUpRight, BookOpen, ExternalLink, Github } from "lucide-react";
+import { cvTraining } from "@/data/portfolio";
 
 const featuredProjects = [
   {
@@ -55,25 +55,17 @@ const featuredProjects = [
 const ProjectsSection = () => (
   <section id="projects" className="px-4 py-20 sm:px-6 lg:px-8">
     <div className="mx-auto max-w-7xl">
-      <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-        <div>
-          <p className="section-kicker">Featured Work</p>
-          <h2 className="section-heading max-w-xl">
-            Selected engineering & <span className="gradient-text">ML projects</span>
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-            A showcase of native utilities, machine learning pipelines, and analytics platforms built with focus on utility and execution.
-          </p>
-        </div>
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:underline"
-        >
-          View all projects & training
-          <ArrowUpRight size={16} />
-        </Link>
+      <div className="mb-12">
+        <p className="section-kicker">Featured Work & Training</p>
+        <h2 className="section-heading max-w-2xl">
+          Selected engineering & <span className="gradient-text">ML projects</span>
+        </h2>
+        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+          A showcase of native utilities, machine learning pipelines, and analytics platforms built with focus on utility and execution.
+        </p>
       </div>
 
+      {/* Featured Projects Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {featuredProjects.map((p) => (
           <div
@@ -134,14 +126,67 @@ const ProjectsSection = () => (
         ))}
       </div>
 
-      <div className="mt-14 text-center">
-        <Link
-          to="/projects"
-          className="gradient-btn inline-flex items-center justify-center gap-2 text-sm font-medium"
-        >
-          View all projects & summer training
-          <ArrowUpRight size={18} />
-        </Link>
+      {/* Embedded Summer Training Showcase */}
+      <div className="mt-12">
+        <article className="glass-panel overflow-hidden rounded-[2rem] p-0 transition duration-300 hover:border-primary/35">
+          <div className="grid lg:grid-cols-[300px_1fr]">
+            <div className="relative min-h-[200px] overflow-hidden border-b border-border/70 lg:min-h-full lg:border-b-0 lg:border-r">
+              <img
+                src={cvTraining.image}
+                alt={cvTraining.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="p-6 lg:p-7">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-primary">
+                    <BookOpen size={16} />
+                    Summer Training Highlight
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold text-foreground">
+                    {cvTraining.title}
+                  </h3>
+                </div>
+
+                <span className="rounded-full border border-border/70 px-4 py-1.5 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground w-fit">
+                  {cvTraining.duration}
+                </span>
+              </div>
+
+              <p className="mt-3 line-clamp-2 max-w-4xl text-sm leading-6 text-muted-foreground">
+                {cvTraining.summary}
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {cvTraining.tech.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-3">
+                {cvTraining.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-xs font-medium text-primary transition hover:border-primary/45 hover:bg-primary hover:text-primary-foreground"
+                  >
+                    {link.label}
+                    <ArrowUpRight size={14} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>

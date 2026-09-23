@@ -85,16 +85,10 @@ type PortfolioRow = {
   skill_sections?: EditableSkillSection[];
 };
 
-const STORAGE_KEY = "bhavesh-portfolio-admin-content-v4";
+const STORAGE_KEY = "bhavesh-portfolio-admin-content-v5";
 const REMOTE_ROW_ID = "main";
 const LOCAL_ADMIN_USER = import.meta.env.VITE_ADMIN_USER ?? "bhavesh-admin";
 const LOCAL_ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS ?? "bk-portfolio-2026";
-const legacyAboutItems = [
-  "A strong interest lies in building interfaces that feel modern, polished, and easy to use.",
-  "Particular interest is drawn to data-heavy problems that combine logic, experimentation, and storytelling.",
-  "The most effective learning comes through shipping projects, reviewing outcomes, and refining rough edges.",
-  "This portfolio is intended to reflect not only technical skills, but also the kind of thoughtful builder being developed.",
-];
 
 const withIds = <T extends Record<string, unknown>>(items: T[], key: keyof T) =>
   items.map((item) => ({
@@ -153,10 +147,10 @@ const defaultContent: PortfolioContent = {
   ),
 };
 
-const shouldReplaceLegacyAbout = (items?: string[]) =>
+const isPersonalAbout = (items?: string[]) =>
   Array.isArray(items) &&
-  items.length === legacyAboutItems.length &&
-  items.every((item, index) => item === legacyAboutItems[index]);
+  items.length >= 3 &&
+  items.some((item) => item.includes("Lovely Professional University") && item.includes("Bhavesh Kumawat"));
 
 const hasLatestProjects = (projects?: EditableProject[]) =>
   Array.isArray(projects) &&
@@ -175,7 +169,7 @@ const normalizeContent = (source?: Partial<PortfolioContent> | null): Partial<Po
 
   let normalized = source;
 
-  if (shouldReplaceLegacyAbout(source.aboutItems)) {
+  if (!isPersonalAbout(source.aboutItems)) {
     normalized = {
       ...normalized,
       aboutItems,

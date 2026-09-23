@@ -1,8 +1,13 @@
 import type { CSSProperties } from "react";
 import { ArrowUpRight, Download, Github, Mail, MapPin, Sparkles, Star } from "lucide-react";
-import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import CertificatesSection from "@/components/sections/CertificatesSection";
+import JourneySection from "@/components/sections/JourneySection";
+import EducationSection from "@/components/sections/EducationSection";
+import CVSection from "@/components/sections/CVSection";
+import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -18,6 +23,7 @@ const Index = () => {
       <Navbar />
 
       <main>
+        {/* Hero Section */}
         <section
           id="home"
           className="relative isolate overflow-hidden px-4 pb-20 pt-28 sm:px-6 lg:px-8"
@@ -55,13 +61,17 @@ const Index = () => {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/projects"
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="gradient-btn inline-flex items-center justify-center gap-2"
                 >
                   View projects
                   <ArrowUpRight size={18} />
-                </Link>
+                </a>
                 <a
                   href={content.profile.github}
                   target="_blank"
@@ -169,12 +179,13 @@ const Index = () => {
           </div>
         </section>
 
+        {/* About Section */}
         <section id="about" className="px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="space-y-4">
-              <p className="section-kicker">About</p>
+              <p className="section-kicker">About Me</p>
               <h2 className="section-heading max-w-md">
-                A quick introduction about who I am and what I am working toward.
+                Driven by curiosity, engineering discipline, and a passion to ship.
               </h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
@@ -187,7 +198,26 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Skills Section - Immediately following About */}
+        <SkillsSection />
+
+        {/* Projects & Training Section */}
         <ProjectsSection />
+
+        {/* Certificates Section */}
+        <CertificatesSection />
+
+        {/* Journey & Roadmap Section */}
+        <JourneySection />
+
+        {/* Education Section */}
+        <EducationSection />
+
+        {/* CV & Resume Section */}
+        <CVSection />
+
+        {/* Contact Section */}
+        <ContactSection />
       </main>
 
       <Footer />

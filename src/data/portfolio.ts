@@ -16,10 +16,10 @@ export const profile = {
 };
 
 export const aboutItems = [
-  "I am Bhavesh Kumawat, a B.Tech Computer Science student who enjoys learning by building real projects and improving them step by step.",
-  "My main areas of interest are Data Science, Machine Learning, and web development, because they let me solve practical problems with both logic and creativity.",
-  "Through my academic work, certifications, and personal projects, I have been developing skills in Python, analytics, frontend development, and problem solving.",
-  "This portfolio represents my journey as a student and showcases the work I have done so far to prepare myself for internships, industry projects, and future opportunities.",
+  "I am Bhavesh Kumawat, a Computer Science & Engineering undergraduate at Lovely Professional University driven by curiosity, high agency, and a passion for turning ideas into working software.",
+  "My core technical sweet spot is at the intersection of Machine Learning, Data Science, and Systems Automation — from architecting native desktop tools like VisionType with Quartz Unicode injection to training predictive pipelines using TensorFlow Decision Forests.",
+  "I believe strong software engineering requires both algorithmic rigor and practical craftsmanship. I continuously sharpen my problem-solving skills across Data Structures & Algorithms, Backend systems, and Generative AI through dedicated programs at CipherSchools and GeeksforGeeks.",
+  "Beyond writing code, I care about building tools that are dependable, delightful, and genuinely solve real problems. I am currently seeking engineering internships and collaborative opportunities where I can contribute immediately, learn fast, and ship impactful software.",
 ];
 
 export const skillGroups = [

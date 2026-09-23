@@ -1,19 +1,30 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Github } from "lucide-react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { profile } from "@/data/portfolio";
 
 const navLinks = [
-  { label: "Home", href: "/#home", type: "anchor" },
-  { label: "About", href: "/#about", type: "anchor" },
-  { label: "Projects", href: "/#projects", type: "anchor" },
-  { label: "Skills", href: "/skills", type: "route" },
-  { label: "Training", href: "/projects", type: "route" },
-  { label: "Journey", href: "/journey", type: "route" },
-  { label: "Certificates", href: "/certificates", type: "route" },
-  { label: "CV", href: "/cv", type: "route" },
-  { label: "Education", href: "/education", type: "route" },
-  { label: "Contact", href: "/contact", type: "route" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Certificates", href: "/#certificates" },
+  { label: "Journey", href: "/#journey" },
+  { label: "Education", href: "/#education" },
+  { label: "CV", href: "/#cv" },
+  { label: "Contact", href: "/#contact" },
+];
+
+const sectionIds = [
+  "contact",
+  "cv",
+  "education",
+  "journey",
+  "certificates",
+  "projects",
+  "skills",
+  "about",
+  "home",
 ];
 
 const Navbar = () => {
@@ -38,60 +49,52 @@ const Navbar = () => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      if (location.pathname !== "/") {
+      if (window.scrollY < 120) {
+        setActiveHomeSection("home");
         return;
       }
 
-      const projectsSection = document.getElementById("projects");
-      const aboutSection = document.getElementById("about");
-
-      const scrollPos = window.scrollY;
-      if (projectsSection && scrollPos >= projectsSection.offsetTop - 140) {
-        setActiveHomeSection("projects");
-      } else if (aboutSection && scrollPos >= aboutSection.offsetTop - 140) {
-        setActiveHomeSection("about");
-      } else {
-        setActiveHomeSection("home");
+      const scrollPos = window.scrollY + 180;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && scrollPos >= el.offsetTop) {
+          setActiveHomeSection(id);
+          break;
+        }
       }
     };
 
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [location.pathname]);
+  }, []);
 
   useEffect(() => {
-    if (location.pathname !== "/") {
-      return;
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      if (sectionIds.includes(id)) {
+        setActiveHomeSection(id);
+      }
     }
+  }, [location.hash]);
 
-    if (location.hash === "#projects") {
-      setActiveHomeSection("projects");
-    } else if (location.hash === "#about") {
-      setActiveHomeSection("about");
+  const scrollTo = (href: string) => {
+    const id = href.replace("/#", "").replace("#", "");
+    setActiveHomeSection(id);
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      setActiveHomeSection("home");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
-  }, [location.hash, location.pathname]);
+    setIsOpen(false);
+  };
 
   const isAnchorActive = (href: string) => {
-    if (location.pathname !== "/") {
-      return false;
-    }
-
-    if (href.endsWith("#projects")) {
-      return activeHomeSection === "projects";
-    }
-
-    if (href.endsWith("#about")) {
-      return activeHomeSection === "about";
-    }
-
-    if (href.endsWith("#home")) {
-      return activeHomeSection === "home";
-    }
-
-    return false;
+    const id = href.replace("/#", "").replace("#", "");
+    return activeHomeSection === id;
   };
 
   useEffect(() => {
@@ -106,10 +109,10 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-lg shadow-sm border-b border-border" : "bg-transparent"
+        scrolled ? "bg-background/85 backdrop-blur-lg shadow-sm border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
+      <div className="container mx-auto flex items-center justify-between h-16 px-4 max-w-7xl">
         <Link
           to={location.pathname === "/admin" ? "/" : "/admin"}
           aria-label={location.pathname === "/admin" ? "Back to homepage" : "Open admin panel"}
@@ -119,51 +122,27 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-6">
           {navLinks.map((l) => (
-            l.type === "route" ? (
-              <NavLink
-                key={l.href}
-                to={l.href}
-                className={({ isActive }) =>
-                  `group relative overflow-hidden pb-1 text-sm font-medium transition-colors hover:text-primary ${
-                    isActive ? "text-primary" : "text-muted-foreground"
-                  }`
-                }
-              >
-                <span>{l.label}</span>
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-0 h-0.5 w-full origin-left rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-500 ease-out scale-x-0 group-hover:scale-x-100"
-                />
-              </NavLink>
-            ) : (
-              <Link
-                key={l.href}
-                to={l.href}
-                onClick={() => {
-                  if (l.href.endsWith("#projects")) {
-                    setActiveHomeSection("projects");
-                  } else if (l.href.endsWith("#about")) {
-                    setActiveHomeSection("about");
-                  } else {
-                    setActiveHomeSection("home");
-                  }
-                  if (location.pathname === "/" && l.href.endsWith("#home")) {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }
-                }}
-                className={`group relative overflow-hidden pb-1 text-sm font-medium transition-colors hover:text-primary ${
-                  isAnchorActive(l.href) ? "text-primary" : "text-muted-foreground"
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo(l.href);
+              }}
+              className={`group relative overflow-hidden pb-1 text-xs xl:text-sm font-medium transition-colors hover:text-primary ${
+                isAnchorActive(l.href) ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              <span>{l.label}</span>
+              <span
+                aria-hidden="true"
+                className={`absolute bottom-0 left-0 h-0.5 w-full origin-left rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-300 ease-out ${
+                  isAnchorActive(l.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                 }`}
-              >
-                <span>{l.label}</span>
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-0 h-0.5 w-full origin-left rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-500 ease-out scale-x-0 group-hover:scale-x-100"
-                />
-              </Link>
-            )
+              />
+            </a>
           ))}
         </div>
 
@@ -199,55 +178,29 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="lg:hidden bg-background/95 backdrop-blur-lg border-b border-border animate-fade-up">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
+          <div className="container mx-auto px-4 py-5 flex flex-col gap-3">
             {navLinks.map((l) => (
-              l.type === "route" ? (
-                <NavLink
-                  key={l.href}
-                  to={l.href}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `group relative w-fit overflow-hidden py-1 pr-1 text-sm font-medium transition-colors hover:text-primary ${
-                      isActive ? "text-primary" : "text-muted-foreground"
-                    }`
-                  }
-                >
-                  <span>{l.label}</span>
-                  <span
-                    aria-hidden="true"
-                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
-                  />
-                </NavLink>
-              ) : (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  onClick={() => {
-                    if (l.href.endsWith("#projects")) {
-                      setActiveHomeSection("projects");
-                    } else if (l.href.endsWith("#about")) {
-                      setActiveHomeSection("about");
-                    } else {
-                      setActiveHomeSection("home");
-                    }
-                    if (location.pathname === "/" && l.href.endsWith("#home")) {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }
-                    setIsOpen(false);
-                  }}
-                  className={`group relative w-fit overflow-hidden py-1 pr-1 text-sm font-medium transition-colors hover:text-primary ${
-                    isAnchorActive(l.href) ? "text-primary" : "text-muted-foreground"
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(l.href);
+                }}
+                className={`group relative w-fit overflow-hidden py-1.5 pr-2 text-base font-medium transition-colors hover:text-primary ${
+                  isAnchorActive(l.href) ? "text-primary font-semibold" : "text-muted-foreground"
+                }`}
+              >
+                <span>{l.label}</span>
+                <span
+                  aria-hidden="true"
+                  className={`absolute bottom-0 left-0 h-0.5 w-full origin-left rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-300 ease-out ${
+                    isAnchorActive(l.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
-                >
-                  <span>{l.label}</span>
-                  <span
-                    aria-hidden="true"
-                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
-                  />
-                </Link>
-              )
+                />
+              </a>
             ))}
-            <div className="pt-2 border-t border-border/60">
+            <div className="pt-3 border-t border-border/60">
               <a
                 href={profile.github}
                 target="_blank"

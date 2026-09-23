@@ -5,13 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { PortfolioProvider } from "@/lib/portfolio-store";
 import Index from "@/pages/Index";
-import SkillsPage from "@/pages/SkillsPage";
-import ProjectsPage from "@/pages/ProjectsPage";
-import JourneyPage from "@/pages/JourneyPage";
-import CertificatesPage from "@/pages/CertificatesPage";
-import CVPage from "@/pages/CVPage";
-import EducationPage from "@/pages/EducationPage";
-import ContactPage from "@/pages/ContactPage";
 import AdminPage from "@/pages/AdminPage";
 import NotFound from "@/pages/NotFound";
 
@@ -35,57 +28,44 @@ const renderWithProviders = (ui: React.ReactElement, route = "/") => {
   );
 };
 
-describe("Portfolio Page Rendering", () => {
-  it("renders the Home / Index page with hero and name", () => {
+describe("Portfolio Single-Window Rendering", () => {
+  it("renders all sections on the unified Index page in sequence", () => {
     renderWithProviders(<Index />, "/");
+
+    // 1. Home / Hero
     expect(screen.getByText("Bhavesh Kumawat")).toBeInTheDocument();
     expect(screen.getByText(/Building web and data experiences/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/VisionType/i).length).toBeGreaterThan(0);
-  });
 
-  it("renders the Skills page with skill groups", () => {
-    renderWithProviders(<SkillsPage />, "/skills");
+    // 2. About Me
+    expect(screen.getByText("About Me")).toBeInTheDocument();
+    expect(screen.getByText(/Driven by curiosity, engineering discipline, and a passion to ship/i)).toBeInTheDocument();
+
+    // 3. Skills (immediately after About)
+    expect(screen.getByText("Technical Matrix")).toBeInTheDocument();
     expect(screen.getByText("Languages")).toBeInTheDocument();
-    expect(screen.getByText("Python, Web & ML Technologies")).toBeInTheDocument();
-  });
 
-  it("renders the Projects page with project cards and training", () => {
-    renderWithProviders(<ProjectsPage />, "/projects");
-    expect(screen.getByText(/Summer Training in Data Science/i)).toBeInTheDocument();
+    // 4. Projects & Training
     expect(screen.getAllByText(/VisionType/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/DevOps Project: CI\/CD Pipeline for Portfolio Website/i)).toBeInTheDocument();
-  });
+    expect(screen.getByText(/Summer Training Highlight/i)).toBeInTheDocument();
 
-  it("renders the Journey page", () => {
-    renderWithProviders(<JourneyPage />, "/journey");
-    expect(screen.getByText(/Growth so far, and the direction ahead/i)).toBeInTheDocument();
-    expect(screen.getByText("Computer Science Student")).toBeInTheDocument();
-  });
-
-  it("renders the Certificates page with certificates sorted", () => {
-    renderWithProviders(<CertificatesPage />, "/certificates");
-    expect(screen.getByText(/Complete Machine Learning & Data Science/i)).toBeInTheDocument();
-    expect(screen.getByText("GeeksforGeeks")).toBeInTheDocument();
+    // 5. Certificates
+    expect(screen.getByText("Verified Credentials")).toBeInTheDocument();
     expect(screen.getAllByText(/CipherSchools/i).length).toBeGreaterThan(0);
-  });
 
-  it("renders the CV page with duration badges", () => {
-    renderWithProviders(<CVPage />, "/cv");
-    expect(screen.getByText("NOV 25 - DEC 25")).toBeInTheDocument();
-    expect(screen.getByText("JUN 25 - JUL 25")).toBeInTheDocument();
-    expect(screen.getByText("Lovely Professional University")).toBeInTheDocument();
-  });
+    // 6. Journey
+    expect(screen.getByText("Roadmap & Milestones")).toBeInTheDocument();
 
-  it("renders the Education page", () => {
-    renderWithProviders(<EducationPage />, "/education");
-    expect(screen.getByText(/Academic foundations that shaped the way I learn/i)).toBeInTheDocument();
-    expect(screen.getByText("Lovely Professional University")).toBeInTheDocument();
-  });
+    // 7. Education
+    expect(screen.getByText("Academic Track")).toBeInTheDocument();
+    expect(screen.getAllByText(/Lovely Professional University/i).length).toBeGreaterThan(0);
 
-  it("renders the Contact page", () => {
-    renderWithProviders(<ContactPage />, "/contact");
-    expect(screen.getByText(/Let's build something thoughtful and ambitious/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText("Your name")).toBeInTheDocument();
+    // 8. CV
+    expect(screen.getByText("Curriculum Vitae")).toBeInTheDocument();
+    expect(screen.getByText(/Download Official CV \(PDF\)/i)).toBeInTheDocument();
+
+    // 9. Contact
+    expect(screen.getByText("Send a Message")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("e.g. Alex Smith")).toBeInTheDocument();
   });
 
   it("renders the Admin login form when unauthenticated", () => {
