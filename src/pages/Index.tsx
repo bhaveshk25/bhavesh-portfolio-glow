@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { ArrowUpRight, Download, Mail, MapPin, Sparkles, Star } from "lucide-react";
+import { ArrowUpRight, Download, Github, Mail, MapPin, Sparkles, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -53,7 +53,7 @@ const Index = () => {
                 </h1>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-wrap gap-3">
                 <Link
                   to="/projects"
                   className="gradient-btn inline-flex items-center justify-center gap-2"
@@ -62,16 +62,25 @@ const Index = () => {
                   <ArrowUpRight size={18} />
                 </Link>
                 <a
+                  href={content.profile.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 bg-background/75 px-5 py-3 text-sm font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
+                >
+                  <Github size={16} />
+                  GitHub
+                </a>
+                <a
                   href={content.profile.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 bg-background/75 px-6 py-3 text-sm font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 bg-background/75 px-5 py-3 text-sm font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
                 >
-                  LinkedIn profile
+                  LinkedIn
                 </a>
                 <a
                   href={`mailto:${content.profile.email}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-3 text-sm font-medium text-muted-foreground transition hover:text-foreground"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-3 py-3 text-sm font-medium text-muted-foreground transition hover:text-foreground"
                 >
                   <Mail size={16} />
                   {content.profile.email}
@@ -79,7 +88,7 @@ const Index = () => {
                 <a
                   href="/Bhavesh-Kumawat-CV.pdf"
                   download="Bhavesh-Kumawat-CV.pdf"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-6 py-3 text-sm font-medium text-primary transition hover:border-primary/40 hover:bg-primary/15"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-5 py-3 text-sm font-medium text-primary transition hover:border-primary/40 hover:bg-primary/15"
                 >
                   <Download size={16} />
                   Download CV

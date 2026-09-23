@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Github } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { profile } from "@/data/portfolio";
 
 const navLinks = [
   { label: "Home", href: "/#home", type: "anchor" },
@@ -147,6 +148,16 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-border bg-background/75 p-2 text-secondary-foreground transition-colors hover:border-primary/40 hover:bg-primary hover:text-primary-foreground"
+            aria-label="GitHub Profile"
+          >
+            <Github size={18} />
+          </a>
+
           <button
             onClick={() => setDark(!dark)}
             className="rounded-full border border-border bg-background/75 p-2 text-secondary-foreground transition-colors hover:border-primary/40 hover:bg-primary hover:text-primary-foreground"
@@ -210,6 +221,18 @@ const Navbar = () => {
                 </Link>
               )
             ))}
+            <div className="pt-2 border-t border-border/60">
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="inline-flex items-center gap-2 py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Github size={16} />
+                <span>GitHub Profile</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

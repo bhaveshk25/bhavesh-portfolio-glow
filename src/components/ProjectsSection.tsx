@@ -2,24 +2,46 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "EcoCityIQ",
+    title: "VisionType — macOS OCR & Automation Tool",
+    desc: "A native macOS menu bar tool that automates OCR screen capture, clipboard streaming, and human-like typing injection with Quartz Unicode support.",
+    tags: ["macOS", "Python", "OCR", "rumps", "Quartz"],
+    codeUrl: "https://github.com/bhaveshk25/macOS-copy-paste-tool",
+    demoUrl: "https://github.com/bhaveshk25/macOS-copy-paste-tool#readme",
+  },
+  {
+    title: "House Price Prediction (Dual ML Pipeline)",
+    desc: "End-to-end regression system predicting property values, benchmarking Linear Regression against TensorFlow Decision Forests (TF-DF).",
+    tags: ["Python", "TensorFlow", "TF-DF", "Scikit-Learn", "Pandas"],
+    codeUrl: "https://github.com/bhaveshk25/House-Price-Prediction",
+    demoUrl: "https://colab.research.google.com/drive/1Fa-akm1iOLfrpO3xWASI7YgKEo2yGI2t?usp=sharing",
+  },
+  {
+    title: "EcoCityIQ — Urban Air Quality Forecasting",
     desc: "Air Quality Patterns and Pollution Forecasting using real-time data analytics and ML models.",
-    tags: ["Python", "Data Science", "ML"],
+    tags: ["Python", "Data Science", "ML", "Analytics"],
+    codeUrl: "https://github.com/bhaveshk25/ECOCITYIQ-",
+    demoUrl: "https://github.com/bhaveshk25/ECOCITYIQ-#readme",
   },
   {
-    title: "AI Charity Donation Optimizer",
-    desc: "An AI-based chatbot that optimizes charity donations using intelligent matching algorithms.",
-    tags: ["AI", "Chatbot", "Python"],
+    title: "DevOps CI/CD Portfolio Pipeline",
+    desc: "An end-to-end CI/CD delivery pipeline automating build, test, and Docker container deployment with Jenkins and Maven.",
+    tags: ["DevOps", "Docker", "Jenkins", "Git", "Maven"],
+    codeUrl: "https://github.com/bhaveshk25/devops-portfolio-project",
+    demoUrl: "https://github.com/bhaveshk25/devops-portfolio-project#readme",
   },
   {
-    title: "macOS Menu Bar Automation",
-    desc: "A macOS tool for Copy, Type & OCR automation directly from the menu bar.",
-    tags: ["macOS", "OCR", "Automation"],
+    title: "India Stock Market Analysis Dashboard",
+    desc: "Interactive Power BI analytics platform tracking Indian market performance, trading volumes, and sector-wise KPIs using DAX measures.",
+    tags: ["Power BI", "DAX", "Data Analysis", "KPIs"],
+    codeUrl: "https://www.linkedin.com/posts/bhaveshkumar07_indian-stock-market-analytics-dashboard-activity-7408913075929640960-TcK5",
+    demoUrl: "https://www.linkedin.com/posts/bhaveshkumar07_indian-stock-market-analytics-dashboard-activity-7408913075929640960-TcK5",
   },
   {
     title: "DriveSense",
     desc: "Global Traffic Accident Analysis platform with interactive dashboards and insights.",
     tags: ["Data Analysis", "Visualization", "Python"],
+    codeUrl: "https://github.com/bhaveshk25",
+    demoUrl: "https://github.com/bhaveshk25",
   },
 ];
 
@@ -48,10 +70,20 @@ const ProjectsSection = () => (
               ))}
             </div>
             <div className="flex gap-3">
-              <a href="#" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href={p.codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
                 <Github size={16} /> Code
               </a>
-              <a href="#" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href={p.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
                 <ExternalLink size={16} /> Demo
               </a>
             </div>

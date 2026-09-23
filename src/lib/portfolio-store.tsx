@@ -85,7 +85,7 @@ type PortfolioRow = {
   skill_sections?: EditableSkillSection[];
 };
 
-const STORAGE_KEY = "bhavesh-portfolio-admin-content";
+const STORAGE_KEY = "bhavesh-portfolio-admin-content-v2";
 const REMOTE_ROW_ID = "main";
 const LOCAL_ADMIN_USER = import.meta.env.VITE_ADMIN_USER ?? "bhavesh-admin";
 const LOCAL_ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS ?? "bk-portfolio-2026";

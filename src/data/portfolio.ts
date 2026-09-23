@@ -12,6 +12,7 @@ export const profile = {
   location: "India",
   linkedin: "https://www.linkedin.com/in/bhaveshkumar07",
   github: "https://github.com/bhaveshk25",
+  leetcode: "https://leetcode.com/u/bhaveshk25",
 };
 
 export const aboutItems = [
@@ -38,10 +39,24 @@ export const skillGroups = [
 
 export const projects = [
   {
-    title: "EcoCityIQ",
+    title: "VisionType — macOS OCR & Automation Tool",
+    description:
+      "A native macOS menu bar utility for high-speed OCR screen capture, clipboard automation, and human-like typing injection with Quartz Unicode support.",
+    stack: ["Python", "macOS", "rumps", "pytesseract", "Quartz"],
+    note: "Engineered to overcome clipboard restrictions and automate tedious typing workflows.",
+  },
+  {
+    title: "House Price Prediction (Dual ML Pipeline)",
+    description:
+      "End-to-end regression system predicting property values, benchmarking Linear Regression against TensorFlow Decision Forests (TF-DF) to capture non-linear feature interactions.",
+    stack: ["Python", "TensorFlow", "TF-DF", "Scikit-Learn", "Pandas"],
+    note: "Complete ML pipeline with EDA, imputation, log-scaling, and metric evaluation.",
+  },
+  {
+    title: "EcoCityIQ — Urban Air Quality Forecasting",
     description:
       "A city intelligence dashboard that studies air quality patterns and forecasts pollution trends with machine learning.",
-    stack: ["Python", "ML", "Analytics"],
+    stack: ["Python", "Scikit-learn", "ML", "Analytics"],
     note: "Built to turn raw environmental data into readable public insight.",
   },
   {
@@ -203,41 +218,116 @@ export const heroStats = [
 export const cvSkillSections = [
   {
     title: "Languages",
-    items: ["C", "C++", "Python", "Java"],
+    items: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    title: "Python, Web & ML Technologies",
+    title: "Frontend & Web Technologies",
     items: [
-      "NumPy",
-      "Pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Scikit-learn",
-      "HTML",
-      "CSS",
-      "JavaScript",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
+      "Responsive Design",
     ],
   },
   {
-    title: "Developer Tools",
-    items: ["Visual Studio Code", "Git/GitHub"],
+    title: "Machine Learning & Data Science",
+    items: [
+      "TensorFlow",
+      "TensorFlow Decision Forests (TF-DF)",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "Power BI",
+      "DAX",
+      "Exploratory Data Analysis (EDA)",
+    ],
+  },
+  {
+    title: "DevOps, Cloud & System Tools",
+    items: [
+      "Git / GitHub",
+      "Docker",
+      "Jenkins",
+      "Maven",
+      "Linux",
+      "Visual Studio Code",
+      "macOS Quartz / CoreGraphics",
+    ],
   },
   {
     title: "Core Competencies",
     items: [
-      "Data Structures & Algorithms",
-      "OOP",
-      "DBMS",
-      "Front-End Development",
+      "Data Structures & Algorithms (DSA)",
+      "Object-Oriented Programming (OOP)",
+      "Database Management Systems (DBMS)",
+      "CI/CD Pipelines",
+      "System Automation",
     ],
   },
   {
     title: "Soft Skills",
-    items: ["Problem Solving", "Team Collaboration", "Critical Thinking", "Leadership"],
+    items: [
+      "Problem Solving",
+      "Team Collaboration",
+      "Critical Thinking",
+      "Technical Communication",
+      "Continuous Learning",
+    ],
   },
 ];
 
 export const cvProjects = [
+  {
+    title: "VisionType — macOS OCR & Keystroke Automation Tool",
+    duration: "MAR 25 - APR 25",
+    summary:
+      "A native macOS menu bar utility that combines background OCR screen capture, clipboard automation, and human-like keystroke injection with full Unicode/emoji Quartz support.",
+    points: [
+      "Designed and built VisionType, a macOS status bar application automating typing of clipboard and pre-configured text snippets with configurable hotkeys and natural typing jitter.",
+      "Implemented screen selection OCR using Tesseract, extracting text from copy-restricted windows, dialogs, and images with automatic preprocessing.",
+      "Overcame macOS keyboard layout limitations by implementing CoreGraphics/Quartz event tap injection to faithfully render emojis, special symbols, and Unicode strings.",
+    ],
+    tech: ["Python", "rumps", "pytesseract", "pyautogui", "Quartz / pyobjc", "macOS"],
+    image: "/project-covers/macos-automation.svg",
+    href: "https://github.com/bhaveshk25/macOS-copy-paste-tool",
+    cta: "Open Project",
+  },
+  {
+    title: "House Price Prediction (Dual ML Pipeline: TF-DF vs. Regression)",
+    duration: "JAN 26 - FEB 26",
+    summary:
+      "An end-to-end machine learning system analyzing property features to predict sales prices, implementing both standard Linear Regression and TensorFlow Decision Forests.",
+    points: [
+      "Engineered an end-to-end tabular machine learning pipeline with comprehensive data exploration, handling missing values, encoding 79 categorical features, and applying log transformation to reduce skewness.",
+      "Built and benchmarked baseline Linear Regression alongside Random Forest and advanced TensorFlow Decision Forests (TF-DF) Gradient Boosted Trees for non-linear feature interactions.",
+      "Evaluated model performance using Root Mean Squared Error (RMSE) on log-transformed targets, achieving high predictive accuracy and publishing reproducible notebooks and code.",
+    ],
+    tech: ["Python", "TensorFlow Decision Forests", "Scikit-Learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+    image: "/project-covers/house-price-prediction.svg",
+    href: "https://github.com/bhaveshk25/House-Price-Prediction",
+    cta: "Open Project",
+  },
+  {
+    title: "EcoCityIQ — Urban Air Quality & Pollution Forecasting",
+    duration: "AUG 25 - OCT 25",
+    summary:
+      "An environmental intelligence platform analyzing historical urban air pollution sensors and forecasting AQI trends using machine learning.",
+    points: [
+      "Developed a predictive analytics pipeline processing atmospheric and environmental sensor datasets (PM2.5, PM10, NO2, CO) for urban air quality monitoring.",
+      "Engineered time-series features and trained regression models to forecast air quality indices across urban zones.",
+      "Constructed interactive visual dashboards to make environmental trends and hazard warnings understandable for citizens and civic planners.",
+    ],
+    tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+    image: "/project-covers/ecocityiq.svg",
+    href: "https://github.com/bhaveshk25/ECOCITYIQ-",
+    cta: "Open Project",
+  },
   {
     title: "DevOps Project: CI/CD Pipeline for Portfolio Website",
     duration: "NOV 25 - DEC 25",
@@ -268,21 +358,6 @@ export const cvProjects = [
     href: "https://www.linkedin.com/posts/bhaveshkumar07_indian-stock-market-analytics-dashboard-activity-7408913075929640960-TcK5/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEf6LBsB7zmYttTKCD9cCWRCq9A9kSwIdXE",
     cta: "Open Project",
   },
-  {
-    title: "macOS Menu Bar Automation Tool (Copy, Type & OCR Bot)",
-    duration: "MAR 25 - APR 25",
-    summary:
-      "A macOS utility that combines clipboard automation, typed text injection, and OCR capture into one productivity-focused tool.",
-    points: [
-      "Designed and built a macOS menu bar utility that automates typing of user-defined and clipboard text via configurable hotkeys, significantly improving workflows efficiency.",
-      "Implemented real-time clipboard monitoring, auto-typing, and OCR-based text extraction from screen-selected regions to enable text capture beyond standard copy operations.",
-      "Leveraged background OCR processing to extract text from copy-protected environments, showcasing advanced automation, system-level control, and practical problem-solving on macOS.",
-    ],
-    tech: ["Python", "rumps", "pyautogui", "OCR"],
-    image: "/project-covers/macos-automation.svg",
-    href: "https://drive.google.com/file/d/149P4BHfkmv8foN30yiqM1qsYRSdpCVjK/view",
-    cta: "Open Project",
-  },
 ];
 
 export const cvTraining = {
@@ -299,6 +374,10 @@ export const cvTraining = {
   image: "/project-covers/data-science-training.svg",
   href: "https://drive.google.com/file/d/1HAd0HVXSyCpMda8GSwk5FTYAz5mliy8v/view",
   links: [
+    {
+      label: "GitHub Repo",
+      href: "https://github.com/bhaveshk25/House-Price-Prediction",
+    },
     {
       label: "View Report",
       href: "https://drive.google.com/file/d/1HAd0HVXSyCpMda8GSwk5FTYAz5mliy8v/view",

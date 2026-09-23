@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Linkedin, Mail, Phone, Send } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, Phone, Send } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import { profile } from "@/data/portfolio";
 
@@ -96,7 +96,7 @@ const ContactPage = () => {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-[1.5rem] border border-white/12 bg-white/10 p-5 text-primary-foreground transition hover:bg-white/14 sm:col-span-2"
+                className="rounded-[1.5rem] border border-white/12 bg-white/10 p-5 text-primary-foreground transition hover:bg-white/14"
               >
                 <Linkedin size={20} />
                 <p className="mt-4 text-xs uppercase tracking-[0.2em] text-primary-foreground/60">
@@ -104,6 +104,21 @@ const ContactPage = () => {
                 </p>
                 <p className="mt-2 inline-flex items-center gap-2 text-sm font-medium">
                   Connect on LinkedIn
+                  <ArrowUpRight size={16} />
+                </p>
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-[1.5rem] border border-white/12 bg-white/10 p-5 text-primary-foreground transition hover:bg-white/14"
+              >
+                <Github size={20} />
+                <p className="mt-4 text-xs uppercase tracking-[0.2em] text-primary-foreground/60">
+                  GitHub
+                </p>
+                <p className="mt-2 inline-flex items-center gap-2 text-sm font-medium">
+                  github.com/bhaveshk25
                   <ArrowUpRight size={16} />
                 </p>
               </a>
