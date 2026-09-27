@@ -15,7 +15,7 @@ import { getHeroStats, usePortfolioContent } from "@/lib/portfolio-store";
 
 const Index = () => {
   const { content } = usePortfolioContent();
-  const orbitLabels = ["React", "ML", "Data", "DevOps"];
+  const orbitLabels = ["AI Agents", "React", "ML", "DevOps"];
   const heroStats = getHeroStats(content);
 
   return (
@@ -160,7 +160,7 @@ const Index = () => {
                         Focus
                       </p>
                       <p className="mt-3 text-sm font-medium leading-6 text-foreground">
-                        Data science, ML, DevOps, and frontend craft
+                        Multi-agent AI, ML, DevOps, and frontend craft
                       </p>
                     </div>
                     <div className="rounded-2xl border border-border/70 bg-background/80 p-5 lg:p-6">

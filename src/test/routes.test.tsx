@@ -43,8 +43,11 @@ describe("Portfolio Single-Window Rendering", () => {
     // 3. Skills (immediately after About)
     expect(screen.getByText("Technical Matrix")).toBeInTheDocument();
     expect(screen.getByText("Languages")).toBeInTheDocument();
+    expect(screen.getByText("AI, ML & Agentic Systems")).toBeInTheDocument();
+    expect(screen.getAllByText(/LangGraph/i).length).toBeGreaterThan(0);
 
     // 4. Projects & Training
+    expect(screen.getAllByText(/DebugFlow\.ai/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/VisionType/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Summer Training Highlight/i)).toBeInTheDocument();
 

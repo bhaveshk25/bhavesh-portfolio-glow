@@ -31,9 +31,9 @@ Features an ethereal glowing aesthetic with glassmorphism, dynamic particle stag
 - **About Showcase (`/#about`)**: Clean narrative introduction cards detailing background, technical interests, and building philosophy.
 
 ### 2. Multi-Page Experience
-- **Skills (`/skills`)**: Grouped skill matrices across Languages, Python/Web/ML, Dev Tools, Core CS, and Soft Skills.
+- **Skills (`/skills`)**: Grouped skill matrices across Languages, AI/ML & Agentic Systems (LangGraph, Multi-Agent AI, Tree-sitter AST, Pytest Sandbox), Web & Dev Tools, Core CS, and Soft Skills.
 - **Projects & Training (`/projects`)**:
-  - Detailed showcases of engineering projects with live links (e.g. CI/CD Pipeline for Portfolio Website, Indian Stock Market Analytics Dashboard, macOS Menu Bar Automation Bot).
+  - Detailed showcases of engineering projects with live links (e.g. **DebugFlow.ai** — Autonomous Multi-Agent Code Debugger & PR Generator, CI/CD Pipeline for Portfolio Website, Indian Stock Market Analytics Dashboard, macOS Menu Bar Automation Bot).
   - Dedicated Summer Training showcase featuring data science reports and Google Colab notebooks.
 - **Journey (`/journey`)**: Milestone-based roadmap tracking past development, current student focus, and upcoming career steps.
 - **Certificates (`/certificates`)**:

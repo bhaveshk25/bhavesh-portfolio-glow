@@ -3,6 +3,14 @@ import { cvTraining } from "@/data/portfolio";
 
 const featuredProjects = [
   {
+    title: "DebugFlow.ai — Autonomous Multi-Agent Code Debugger & PR Generator",
+    desc: "Autonomous multi-agent system that parses Tree-sitter AST, synthesizes reproducing pytest suites, applies surgical repairs with unified diffs, and opens GitHub Pull Requests.",
+    tags: ["LangGraph", "Python", "Tree-sitter", "Pytest", "Multi-Agent AI", "Gradio"],
+    image: "/project-covers/debugflow-ai.svg",
+    codeUrl: "https://github.com/bhaveshk25/MultiAgent-Ai-code-debugger-and-PR-patch-Generator",
+    demoUrl: "https://github.com/bhaveshk25/MultiAgent-Ai-code-debugger-and-PR-patch-Generator#readme",
+  },
+  {
     title: "VisionType — macOS OCR & Automation Tool",
     desc: "A native macOS menu bar utility that automates OCR screen capture, clipboard streaming, and human-like typing injection with Quartz Unicode support.",
     tags: ["macOS", "Python", "OCR", "rumps", "Quartz"],

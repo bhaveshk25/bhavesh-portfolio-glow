@@ -1,0 +1,59 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#0B1329"/>
+  <rect x="48" y="48" width="1104" height="804" rx="36" fill="url(#paint0_linear)"/>
+  <circle cx="980" cy="200" r="180" fill="#6366F1" fill-opacity="0.25"/>
+  <circle cx="220" cy="720" r="220" fill="#06B6D4" fill-opacity="0.22"/>
+  <circle cx="600" cy="300" r="140" fill="#10B981" fill-opacity="0.12"/>
+
+  <!-- Network / Agent Graph -->
+  <line x1="280" y1="210" x2="480" y2="210" stroke="#6366F1" stroke-width="6" stroke-dasharray="10 8"/>
+  <line x1="680" y1="210" x2="880" y2="210" stroke="#06B6D4" stroke-width="6" stroke-dasharray="10 8"/>
+  <line x1="880" y1="270" x2="680" y2="380" stroke="#10B981" stroke-width="6"/>
+  <line x1="480" y1="380" x2="280" y2="270" stroke="#F59E0B" stroke-width="6"/>
+  <line x1="480" y1="380" x2="680" y2="380" stroke="#06B6D4" stroke-width="6" stroke-dasharray="8 6"/>
+
+  <!-- Agent 1: Analyzer -->
+  <rect x="160" y="160" width="220" height="88" rx="20" fill="#151E38" stroke="#6366F1" stroke-width="3"/>
+  <circle cx="204" cy="204" r="16" fill="#6366F1"/>
+  <text x="236" y="198" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="19" font-weight="700">ANALYZER</text>
+  <text x="236" y="222" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Tree-sitter AST</text>
+
+  <!-- Agent 2: Test Generator -->
+  <rect x="470" y="160" width="220" height="88" rx="20" fill="#151E38" stroke="#06B6D4" stroke-width="3"/>
+  <circle cx="514" cy="204" r="16" fill="#06B6D4"/>
+  <text x="546" y="198" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="19" font-weight="700">TEST GEN</text>
+  <text x="546" y="222" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Reproduction Suite</text>
+
+  <!-- Agent 3: Fixer Agent -->
+  <rect x="780" y="160" width="220" height="88" rx="20" fill="#151E38" stroke="#10B981" stroke-width="3"/>
+  <circle cx="824" cy="204" r="16" fill="#10B981"/>
+  <text x="856" y="198" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="19" font-weight="700">FIXER AGENT</text>
+  <text x="856" y="222" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Unified Diff Patch</text>
+
+  <!-- Central Verification Sandbox -->
+  <rect x="420" y="336" width="320" height="96" rx="22" fill="#111B33" stroke="#F59E0B" stroke-width="3"/>
+  <circle cx="468" cy="384" r="18" fill="#F59E0B"/>
+  <text x="502" y="378" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="20" font-weight="700">PYTEST SANDBOX</text>
+  <text x="502" y="404" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Self-Healing Loop (3x)</text>
+
+  <!-- Code snippet badge -->
+  <rect x="120" y="470" width="960" height="110" rx="20" fill="#0B132B" stroke="#334155" stroke-width="2"/>
+  <circle cx="160" cy="502" r="8" fill="#EF4444"/>
+  <circle cx="186" cy="502" r="8" fill="#F59E0B"/>
+  <circle cx="212" cy="502" r="8" fill="#10B981"/>
+  <text x="248" y="508" fill="#64748B" font-family="monospace" font-size="16">debugflow-pipeline.py</text>
+  <text x="160" y="550" fill="#38BDF8" font-family="monospace" font-size="18">workflow = StateGraph(DebugState) | verifier.run_isolated() -> [tests_pass: True, PR_opened: #104]</text>
+
+  <!-- Title & Subtitle -->
+  <text x="120" y="660" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="70" font-weight="800" letter-spacing="-1">DEBUGFLOW.AI</text>
+  <text x="120" y="728" fill="#93C5FD" font-family="system-ui, sans-serif" font-size="30" font-weight="600">Autonomous Multi-Agent Code Debugger &amp; PR Generator</text>
+  <text x="120" y="776" fill="#64748B" font-family="system-ui, sans-serif" font-size="22">Python • LangGraph • Tree-sitter AST • Pytest Sandbox • GitHub API • Gradio</text>
+
+  <defs>
+    <linearGradient id="paint0_linear" x1="48" y1="48" x2="1152" y2="852" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.6" stop-color="#131D38"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+</svg>

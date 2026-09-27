@@ -25,19 +25,26 @@ export const aboutItems = [
 export const skillGroups = [
   {
     title: "Build",
-    items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind"],
+    items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind", "Gradio"],
   },
   {
     title: "Think",
-    items: ["Python", "Data Science", "Machine Learning", "DSA", "DBMS", "Analytics"],
+    items: ["Python", "Multi-Agent AI", "LangGraph", "Tree-sitter (AST)", "Data Science", "Machine Learning", "DSA", "DBMS"],
   },
   {
     title: "Ship",
-    items: ["Git", "Docker", "Automation", "Problem Solving", "Deployment", "Collaboration"],
+    items: ["Git", "Docker", "Pytest Sandbox", "GitHub API", "Automation", "CI/CD", "Deployment"],
   },
 ];
 
 export const projects = [
+  {
+    title: "DebugFlow.ai — Multi-Agent Code Debugger & PR Generator",
+    description:
+      "Autonomous multi-agent code debugger that parses Tree-sitter AST, synthesizes reproducing pytest suites, applies surgical repairs, and generates GitHub Pull Requests.",
+    stack: ["Python", "LangGraph", "Tree-sitter", "Pytest", "Multi-Agent AI", "GitHub API"],
+    note: "Built with a self-healing verification loop and automated patch delivery.",
+  },
   {
     title: "VisionType — macOS OCR & Automation Tool",
     description:
@@ -235,21 +242,12 @@ export const cvSkillSections = [
     items: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    title: "Frontend & Web Technologies",
+    title: "AI, ML & Agentic Systems",
     items: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Vite",
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "Responsive Design",
-    ],
-  },
-  {
-    title: "Machine Learning & Data Science",
-    items: [
+      "LangGraph",
+      "Multi-Agent AI",
+      "Tree-sitter (AST)",
+      "Pytest Sandbox",
       "TensorFlow",
       "TensorFlow Decision Forests (TF-DF)",
       "Scikit-learn",
@@ -260,6 +258,20 @@ export const cvSkillSections = [
       "Power BI",
       "DAX",
       "Exploratory Data Analysis (EDA)",
+    ],
+  },
+  {
+    title: "Frontend & Web Technologies",
+    items: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
+      "Gradio",
+      "Responsive Design",
     ],
   },
   {
@@ -277,6 +289,8 @@ export const cvSkillSections = [
   {
     title: "Core Competencies",
     items: [
+      "Agentic Workflows",
+      "AST Code Analysis",
       "Data Structures & Algorithms (DSA)",
       "Object-Oriented Programming (OOP)",
       "Database Management Systems (DBMS)",
@@ -297,6 +311,21 @@ export const cvSkillSections = [
 ];
 
 export const cvProjects = [
+  {
+    title: "DebugFlow.ai — Autonomous Multi-Agent Code Debugger & PR Generator",
+    duration: "JAN 26 - FEB 26",
+    summary:
+      "An autonomous multi-agent AI system that parses concrete syntax trees (Tree-sitter AST), isolates code defects, synthesizes reproducing pytest suites, applies surgical repairs with unified diffs, and opens GitHub Pull Requests.",
+    points: [
+      "Orchestrated an autonomous multi-agent debugging workflow using LangGraph state machines, coordinating specialized Analyzer, Test Generator, and Fixer agents with cyclical self-correction.",
+      "Integrated Tree-sitter AST parser to analyze tracebacks, extract call-site coordinates, and snap function boundaries to concrete syntax nodes for pinpoint defect isolation.",
+      "Automated bug reproduction with synthetic pytest suites in ephemeral sandboxes, generating unified diffs and automatically publishing GitHub Pull Requests and downloadable .patch files.",
+    ],
+    tech: ["Python", "LangGraph", "Tree-sitter", "Pytest", "Multi-Agent AI", "GitHub API", "Gradio"],
+    image: "/project-covers/debugflow-ai.svg",
+    href: "https://github.com/bhaveshk25/MultiAgent-Ai-code-debugger-and-PR-patch-Generator",
+    cta: "Open Project",
+  },
   {
     title: "VisionType — macOS OCR & Keystroke Automation Tool",
     duration: "MAR 25 - APR 25",
