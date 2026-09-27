@@ -231,7 +231,7 @@ export const education = [
 ];
 
 export const heroStats = [
-  { value: "7.91", label: "Current CGPA" },
+  { value: "7.83", label: "Current CGPA" },
   { value: `${projects.length}+`, label: "Projects completed" },
   { value: `${certificates.length}+`, label: "Total certifications" },
 ];
@@ -277,6 +277,8 @@ export const cvSkillSections = [
   {
     title: "DevOps, Cloud & System Tools",
     items: [
+      "Spring Boot",
+      "PostgreSQL",
       "Git / GitHub",
       "Docker",
       "Jenkins",
@@ -313,7 +315,7 @@ export const cvSkillSections = [
 export const cvProjects = [
   {
     title: "DebugFlow.ai — Autonomous Multi-Agent Code Debugger & PR Generator",
-    duration: "JAN 26 - FEB 26",
+    duration: "SEP 26 - PRESENT",
     summary:
       "An autonomous multi-agent AI system that parses concrete syntax trees (Tree-sitter AST), isolates code defects, synthesizes reproducing pytest suites, applies surgical repairs with unified diffs, and opens GitHub Pull Requests.",
     points: [
@@ -328,7 +330,7 @@ export const cvProjects = [
   },
   {
     title: "VisionType — macOS OCR & Keystroke Automation Tool",
-    duration: "MAR 25 - APR 25",
+    duration: "JUN 26 - SEP 26",
     summary:
       "A native macOS menu bar utility that combines background OCR screen capture, clipboard automation, and human-like keystroke injection with full Unicode/emoji Quartz support.",
     points: [
@@ -388,7 +390,7 @@ export const cvProjects = [
   },
   {
     title: "India Stock Market Analysis Dashboard",
-    duration: "OCT 25 - DEC 25",
+    duration: "DEC 2025",
     summary:
       "A data-rich Power BI dashboard for tracking Indian stock performance with KPIs, slicers, and company-wise market insight.",
     points: [
@@ -405,7 +407,7 @@ export const cvProjects = [
 
 export const cvTraining = {
   title: "Summer Training in Data Science (Techvanto)",
-  duration: "JUN 25 - JUL 25",
+  duration: "MAY 24 - MAY 25",
   summary:
     "A single formal training experience focused on Python-led data analysis, dashboarding, and a machine learning home price estimator project.",
   points: [
@@ -457,22 +459,22 @@ export const cvEducation = [
   {
     institution: "Lovely Professional University",
     detail: "Bachelor of Technology - Computer Science and Engineering",
-    meta: "CGPA: 8.10",
-    location: "Punjab, India",
-    date: "Since Aug 2023",
+    meta: "CGPA: 7.83",
+    location: "Phagwara, Punjab",
+    date: "2023 - Present",
   },
   {
     institution: "Matrix Sr. Sec. School",
-    detail: "Intermediate",
-    meta: "Percentage: 93.2%",
-    location: "Rajasthan, India",
-    date: "Apr 2021 - Mar 2022",
+    detail: "12th",
+    meta: "Percentage: 84.20%",
+    location: "Sikar, Rajasthan",
+    date: "2021 - 2022",
   },
   {
     institution: "Tagore Public School",
-    detail: "Matriculation",
-    meta: "Percentage: 84.2%",
-    location: "Rajasthan, India",
-    date: "Apr 2019 - Mar 2020",
+    detail: "10th",
+    meta: "Percentage: 93.2%",
+    location: "Jhunjhunu, Rajasthan",
+    date: "2018 - 2019",
   },
 ];
