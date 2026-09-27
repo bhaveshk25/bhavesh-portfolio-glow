@@ -35,6 +35,8 @@ describe("Portfolio Single-Window Rendering", () => {
     // 1. Home / Hero
     expect(screen.getByText("Bhavesh Kumawat")).toBeInTheDocument();
     expect(screen.getByText(/Building web and data experiences/i)).toBeInTheDocument();
+    expect(screen.getByText("7.83")).toBeInTheDocument();
+    expect(screen.getByText("Current CGPA")).toBeInTheDocument();
 
     // 2. About Me
     expect(screen.getByText("About Me")).toBeInTheDocument();
